@@ -1,8 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-
-import 'package:personal_assistant/global/app_color.dart';
-import 'package:personal_assistant/global/screen_size.dart';
-import 'package:personal_assistant/widgets/voice_activation_widget.dart';
+import 'package:personal_assistant/core/my_route.gr.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,11 +12,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(),
       debugShowCheckedModeBanner: false,
+      builder: ExtendedNavigator.builder<AssistantRoutes>(
+        router: AssistantRoutes(),
+      ),
     );
   }
 }
@@ -35,20 +32,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: appBlack,
-      body: Stack(
-        children: [
-          Container(height: height(context), width: width(context),),
-          Align(
-            alignment: Alignment.bottomRight,
-            child: Padding(
-              padding: const EdgeInsets.all(18.0),
-              child: VoiceActivationWidget(),
-            ),
-          )
-        ],
-      ),
-    );
+    return Scaffold();
   }
 }
