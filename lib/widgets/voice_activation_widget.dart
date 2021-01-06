@@ -44,6 +44,14 @@ class _VoiceActivationWidgetState extends State<VoiceActivationWidget> with Sing
                 offset: Offset(
                   0.0, 0.0
                 )
+              ),
+              BoxShadow(
+                  color: appCyan,
+                  blurRadius: _animation.value * 0.25,
+                  spreadRadius: _animation.value * 0.25,
+                  offset: Offset(
+                      0.0, 0.0
+                  )
               )
             ],
             color: appBlack
