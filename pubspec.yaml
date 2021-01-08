@@ -33,6 +33,7 @@ dependencies:
   geocoding: ^1.0.5
   provider: ^4.3.2+3
   intl: ^0.16.1
+  weather: ^1.2.4
 
 dev_dependencies:
   flutter_test:
