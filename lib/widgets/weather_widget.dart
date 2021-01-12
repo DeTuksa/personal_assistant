@@ -17,10 +17,9 @@ class _WeatherWidgetState extends State<WeatherWidget> {
       builder: (context, locationModel, child) {
 
         if (locationModel.currentPosition == null
-         && locationModel.currentAddress == null
-        && locationModel.currentAddress == ""
-        && locationModel.weather.weatherDescription == null
-        && locationModel.weather.temperature == null) {
+         || locationModel.currentAddress == null
+        || locationModel.currentAddress == ""
+        || locationModel.weather == null) {
           return Container(
             width: width(context) * 0.47,
             height: 180,
@@ -43,9 +42,9 @@ class _WeatherWidgetState extends State<WeatherWidget> {
                             fontSize: 20
                         ),
                       ),
-                      SizedBox(height: 5,),
+                      SizedBox(height: 20,),
                      SizedBox(
-                       height: 70, width: 70,
+                       height: 50, width: 50,
                        child: CircularProgressIndicator(
                          valueColor: AlwaysStoppedAnimation<Color>(appCyan),
                        ),
