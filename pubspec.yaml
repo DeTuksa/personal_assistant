@@ -34,6 +34,8 @@ dependencies:
   provider: ^4.3.2+3
   intl: ^0.16.1
   weather: ^1.2.4
+  http: ^0.12.2
+  cached_network_image: ^2.5.0
 
 dev_dependencies:
   flutter_test:
@@ -51,6 +53,9 @@ flutter:
   # included with your application, so that you can use the icons in
   # the material Icons class.
   uses-material-design: true
+
+  assets:
+    - assets/placeholders/
 
   # To add assets to your application, add an assets section, like this:
   # assets:

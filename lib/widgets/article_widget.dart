@@ -12,7 +12,7 @@ class _ArticleWidgetState extends State<ArticleWidget> {
   Widget build(BuildContext context) {
     return Container(
       width: width(context) * 0.47,
-      height: 180,
+      height: 80,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
           color: coolGray

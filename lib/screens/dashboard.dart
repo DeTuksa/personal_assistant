@@ -46,8 +46,8 @@ class _DashboardScreenState extends State<DashboardScreen> {
                         Column(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            MotivationWidget(),
-                            ArticleWidget()
+                            ArticleWidget(),
+                            MotivationWidget()
                           ],
                         )
                       ],
