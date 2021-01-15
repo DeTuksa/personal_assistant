@@ -11,6 +11,8 @@ class LocationModel extends ChangeNotifier {
   String currentAddress = '';
   List<Placemark> p;
   GeolocatorPlatform geolocator;
+  bool serviceEnabled;
+  LocationPermission permission;
 
   WeatherFactory weatherFactory = new WeatherFactory(
       "1523a0a7dfccee30b3b2c1ba576dc33e",
@@ -22,8 +24,34 @@ class LocationModel extends ChangeNotifier {
   Weather weather;
 
   LocationModel() {
+    permissionRequest();
     stream = getCurrentLocation();
     notifyListeners();
+  }
+
+  permissionRequest() async {
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    notifyListeners();
+    if(!serviceEnabled) {
+      return Future.error('Location services are disabled.');
+    }
+    permission = await Geolocator.checkPermission();
+    if(permission == LocationPermission.deniedForever) {
+      return Future.error(
+        'Location permissions are permanently denied'
+      );
+    }
+    if(permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      notifyListeners();
+      if(permission != LocationPermission.whileInUse
+      && permission != LocationPermission.always) {
+        return Future.error(
+          'Location permissions are denied (actual value: $permission).'
+        );
+      }
+    }
+    return await Geolocator.getCurrentPosition();
   }
 
   getCurrentLocation() {
