@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:personal_assistant/core/models/article_model.dart';
 import 'package:personal_assistant/core/models/location_model.dart';
 import 'package:provider/provider.dart';
 import 'file:///C:/Users/Emmanuel/Documents/Developer/Personal-Assistant/lib/core/routing/my_route.gr.dart';
@@ -10,6 +11,9 @@ void main() {
       providers: [
         ChangeNotifierProvider(
           create: (_) => LocationModel(),
+        ),
+        ChangeNotifierProvider(
+          create: (_) => NewsModel(),
         )
       ],
       child: MyApp(),

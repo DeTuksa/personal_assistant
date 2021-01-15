@@ -122,7 +122,9 @@ class _MotivationWidgetState extends State<MotivationWidget> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                          snapshot.data.quoteText,
+                          snapshot.data.quoteText.length < 120 ?
+                        snapshot.data.quoteText :
+                        snapshot.data.quoteText.substring(0, 120) + '...',
                         style: TextStyle(
                           color: appWhite,
                           fontSize: 15,
