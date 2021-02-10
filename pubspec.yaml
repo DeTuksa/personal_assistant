@@ -29,7 +29,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.1
   auto_route: ^0.6.9
-  geolocator: ^6.1.13
+  geolocator: ^6.2.0
   geocoding: ^1.0.5
   provider: ^4.3.2+3
   intl: ^0.16.1

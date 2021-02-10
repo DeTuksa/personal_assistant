@@ -59,7 +59,7 @@ class LocationModel extends ChangeNotifier {
         desiredAccuracy: LocationAccuracy.best,
         forceAndroidLocationManager: true,
       timeInterval: 1,
-      timeLimit: Duration(minutes: 1)
+      timeLimit: Duration(seconds: 90)
     ).listen((Position position) async {
       currentPosition = position;
       notifyListeners();
@@ -69,6 +69,7 @@ class LocationModel extends ChangeNotifier {
         );
         Placemark place = p[0];
         currentAddress = "${place.locality}, ${place.country}";
+        print(currentAddress);
         notifyListeners();
       } catch(e) {
         print(e);

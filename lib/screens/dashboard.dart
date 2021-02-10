@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:personal_assistant/global/app_color.dart';
 import 'package:personal_assistant/global/screen_size.dart';
 import 'package:personal_assistant/widgets/article_widget.dart';
+import 'package:personal_assistant/widgets/extra_widget.dart';
+import 'package:personal_assistant/widgets/home_widget.dart';
 import 'package:personal_assistant/widgets/motivation_widget.dart';
+import 'package:personal_assistant/widgets/news_widget.dart';
+import 'package:personal_assistant/widgets/note_widget.dart';
 import 'package:personal_assistant/widgets/reminder_widget.dart';
 import 'package:personal_assistant/widgets/voice_activation_widget.dart';
 import 'package:personal_assistant/widgets/weather_widget.dart';
@@ -53,7 +57,36 @@ class _DashboardScreenState extends State<DashboardScreen> {
                       ],
                     ),
                   ),
-                )
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                    left: 8, right: 8, top: 10
+                  ),
+                  child: NewsWidget(),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(
+                      top: 15, left: 8, right: 8
+                  ),
+                  child: Container(
+                    width: width(context),
+                    height: 180,
+                    child: Row(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        HomeWidget(),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            ExtraWidget(),
+                            NoteWidget()
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
