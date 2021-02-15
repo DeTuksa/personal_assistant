@@ -1,4 +1,6 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:personal_assistant/core/routing/my_route.gr.dart';
 import 'package:personal_assistant/global/app_color.dart';
 import 'package:personal_assistant/global/screen_size.dart';
 import 'package:personal_assistant/widgets/article_widget.dart';
@@ -134,7 +136,11 @@ class _DashboardScreenState extends State<DashboardScreen> {
             alignment: Alignment.bottomRight,
             child: Padding(
               padding: const EdgeInsets.all(18.0),
-              child: VoiceActivationWidget(),
+              child: VoiceActivationWidget(
+                onTapFunction: () {
+                  ExtendedNavigator.of(context).push("${Routes.listeningScreen}");
+                },
+              ),
             ),
           )
         ],

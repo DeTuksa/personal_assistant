@@ -10,11 +10,14 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 
 import '../../screens/dashboard.dart';
+import '../../screens/listening_screen.dart';
 
 class Routes {
   static const String dashboardScreen = '/';
+  static const String listeningScreen = '/listening-screen';
   static const all = <String>{
     dashboardScreen,
+    listeningScreen,
   };
 }
 
@@ -23,6 +26,7 @@ class AssistantRoutes extends RouterBase {
   List<RouteDef> get routes => _routes;
   final _routes = <RouteDef>[
     RouteDef(Routes.dashboardScreen, page: DashboardScreen),
+    RouteDef(Routes.listeningScreen, page: ListeningScreen),
   ];
   @override
   Map<Type, AutoRouteFactory> get pagesMap => _pagesMap;
@@ -30,6 +34,12 @@ class AssistantRoutes extends RouterBase {
     DashboardScreen: (data) {
       return MaterialPageRoute<dynamic>(
         builder: (context) => DashboardScreen(),
+        settings: data,
+      );
+    },
+    ListeningScreen: (data) {
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => ListeningScreen(),
         settings: data,
       );
     },

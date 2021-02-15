@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:personal_assistant/global/app_color.dart';
 
 class VoiceActivationWidget extends StatefulWidget {
+
+  final VoidCallback onTapFunction;
+
+  VoiceActivationWidget({this.onTapFunction});
+
   @override
   _VoiceActivationWidgetState createState() => _VoiceActivationWidgetState();
 }
@@ -24,10 +29,16 @@ class _VoiceActivationWidgetState extends State<VoiceActivationWidget> with Sing
   }
 
   @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return InkWell(
       borderRadius: BorderRadius.circular(40),
-      onTap: () {},
+      onTap: this.widget.onTapFunction,
       child: Material(
         elevation: 4,
         borderRadius: BorderRadius.circular(40),
