@@ -22,6 +22,7 @@ class LocationModel extends ChangeNotifier {
   double weatherCondition;
   double temperature;
   Weather weather;
+  String weatherIcon;
 
   LocationModel() {
     permissionRequest();
@@ -83,8 +84,12 @@ class LocationModel extends ChangeNotifier {
     weather = await weatherFactory.currentWeatherByLocation(
       currentPosition.latitude, currentPosition.longitude
     );
+    weatherIcon = "http://openweathermap.org/img/wn/${weather.weatherIcon}@2x.png";
+    notifyListeners();
     print(weather.temperature);
     print(weather.weatherDescription);
+    print('Weather Icon: '+ weather.weatherIcon);
+    print(weatherIcon);
   }
 
   cancelStream() {
