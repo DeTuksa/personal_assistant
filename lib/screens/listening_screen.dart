@@ -29,6 +29,13 @@ class _ListeningScreenState extends State<ListeningScreen> with SingleTickerProv
   }
 
   @override
+  void dispose() {
+    // TODO: implement dispose
+    _animationController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: appBlack,

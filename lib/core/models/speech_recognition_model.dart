@@ -2,11 +2,11 @@
 import 'package:flutter/material.dart';
 import 'package:speech_to_text/speech_recognition_error.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
+import 'package:personal_assistant/core/helper/string_extension.dart';
 
 class SpeechRecModel extends ChangeNotifier {
 
   String mainText = "";
-  String lastWord = "";
   String lastStatus = "";
   String lastError = "";
   String currentLocaleId = "";
@@ -42,12 +42,6 @@ class SpeechRecModel extends ChangeNotifier {
     }
   }
 
-  void stopListening() {
-    speechToText.stop();
-    level = 0.0;
-    notifyListeners();
-  }
-
   void statusListener(String status) {
     lastStatus = "$status";
     notifyListeners();
@@ -71,17 +65,15 @@ class SpeechRecModel extends ChangeNotifier {
         listenFor: listeningDuration,
         pauseFor: Duration(seconds: 5),
         onResult: (value) {
-          mainText = value.recognizedWords;
+          mainText = value.recognizedWords.capitalize();
           notifyListeners();
           print(mainText);
         },
         cancelOnError: true,
         localeId: currentLocaleId,
       );
-      print(speechToText.isAvailable);
       print(speechToText.isListening);
       print(speechToText.lastRecognizedWords);
-      print(speechToText.hasRecognized);
       isListening = false;
       notifyListeners();
     } else {
