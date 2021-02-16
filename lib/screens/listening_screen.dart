@@ -20,7 +20,7 @@ class _ListeningScreenState extends State<ListeningScreen> with SingleTickerProv
   void initState() {
     // TODO: implement initState
     super.initState();
-    _animationController = AnimationController(vsync: this, duration: Duration(milliseconds: 180));
+    _animationController = AnimationController(vsync: this, duration: Duration(milliseconds: 360));
     _animationController.repeat(reverse: true);
     _animation = Tween(begin: 4.0, end: 12.0).animate(_animationController)..addListener(() {
       setState(() {
@@ -101,16 +101,20 @@ class _ListeningScreenState extends State<ListeningScreen> with SingleTickerProv
                                   boxShadow: [
                                     BoxShadow(
                                         color: appBlue,
-                                        blurRadius: _animation.value,
-                                        spreadRadius: _animation.value,
+                                        blurRadius: speechRecModel.speechToText.isListening ?
+                                        _animation.value * 2 :_animation.value,
+                                        spreadRadius: speechRecModel.speechToText.isListening ?
+                                        _animation.value * 2 : _animation.value,
                                         offset: Offset(
                                             0.0, 0.0
                                         )
                                     ),
                                     BoxShadow(
                                         color: appCyan,
-                                        blurRadius: _animation.value * 0.25,
-                                        spreadRadius: _animation.value * 0.25,
+                                        blurRadius: speechRecModel.speechToText.isListening ?
+                                        _animation.value * 0.8 : _animation.value * 0.25,
+                                        spreadRadius: speechRecModel.speechToText.isListening ?
+                                        _animation.value * 0.8 : _animation.value * 0.25,
                                         offset: Offset(
                                             0.0, 0.0
                                         )
@@ -123,7 +127,12 @@ class _ListeningScreenState extends State<ListeningScreen> with SingleTickerProv
                                   Center(
                                     child: SizedBox(
                                       height: 200, width: 200,
-                                      child: CircularProgressIndicator(
+                                      child: speechRecModel.speechToText.isListening ?
+                                      CircularProgressIndicator(
+                                        valueColor: AlwaysStoppedAnimation<Color>(appBlue),
+                                        value: 1,
+                                        strokeWidth: 3.5,
+                                      ) : CircularProgressIndicator(
                                         valueColor: AlwaysStoppedAnimation<Color>(appBlue),
                                         backgroundColor: appCyan,
                                         strokeWidth: 3.5,
