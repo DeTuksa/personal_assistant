@@ -8,8 +8,8 @@ It incorporates features such as weather update, news update, quotes update and 
 
 ## App Images
 
-![Screenshot](screenshots/home_screen.png)
-![Screenshot](screenshots/listening1.png)
-![Screenshot](screenshots/listening2.png)
-![Screenshot](screenshots/listening3.png)
+![Screenshot](screenshots/home_screen.jpg)
+![Screenshot](screenshots/listening1.jpg)
+![Screenshot](screenshots/listening2.jpg)
+![Screenshot](screenshots/listening3.jpg)
 
