@@ -1,16 +1,15 @@
-# personal_assistant
+# myAssistant
 
-A personal assistant application built with flutter
+# About
 
-## Getting Started
+This is a personal assistant mobile application built with flutter
 
-This project is a starting point for a Flutter application.
+It incorporates features such as weather update, news update, quotes update and more.
 
-A few resources to get you started if this is your first Flutter project:
+## App Images
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+![Screenshot](screenshots/home_screen.png)
+![Screenshot](screenshots/listening1.png)
+![Screenshot](screenshots/listening2.png)
+![Screenshot](screenshots/listening3.png)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
