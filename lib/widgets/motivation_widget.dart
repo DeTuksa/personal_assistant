@@ -28,7 +28,8 @@ class _MotivationWidgetState extends State<MotivationWidget> {
   }
 
   Future<Quote> fetchQuote() async {
-    final response = await http.get('https://favqs.com/api/qotd');
+    var url = Uri.parse('https://favqs.com/api/qotd');
+    final response = await http.get(url);
 
     if (response.statusCode == 200) {
       return Quote.fromJson(json.decode(response.body));
@@ -38,8 +39,9 @@ class _MotivationWidgetState extends State<MotivationWidget> {
   }
   
   Future<QuoteImage> fetchImage() async {
+    var url = Uri.parse('https://api.unsplash.com/photos/random/?client_id=7yiEOPneY5ChQiMkFYtjw0f1epLNof25wqalAu5WKL4');
     final response = await http
-        .get('https://api.unsplash.com/photos/random/?client_id=7yiEOPneY5ChQiMkFYtjw0f1epLNof25wqalAu5WKL4');
+        .get(url);
 
     if (response.statusCode == 200) {
       return QuoteImage.fromJson(json.decode(response.body));

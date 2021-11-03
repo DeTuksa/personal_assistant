@@ -16,7 +16,7 @@ class NewsModel extends ChangeNotifier {
   }
 
   Future<void> getNews() async {
-    String url = 'https://newsapi.org/v2/top-headlines?country=ng&apiKey=$apiKey';
+    var url = Uri.parse('https://newsapi.org/v2/top-headlines?country=ng&apiKey=$apiKey');
 
     var response = await http.get(url);
 

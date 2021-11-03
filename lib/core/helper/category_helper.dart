@@ -1,7 +1,7 @@
 import 'package:personal_assistant/core/models/article_model.dart';
 
 List<CategoryModel> getCategories() {
-  List<CategoryModel> myCategories = List<CategoryModel>();
+  List<CategoryModel> myCategories = <CategoryModel>[];
   CategoryModel categoryModel;
 
   //1

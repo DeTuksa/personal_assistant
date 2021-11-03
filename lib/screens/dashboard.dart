@@ -138,7 +138,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               padding: const EdgeInsets.all(18.0),
               child: VoiceActivationWidget(
                 onTapFunction: () {
-                  ExtendedNavigator.of(context).push("${Routes.listeningScreen}");
+                  AutoRouter.of(context).push(ListeningScreenRoute());
                 },
               ),
             ),

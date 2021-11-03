@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:personal_assistant/core/models/article_model.dart';
 import 'package:personal_assistant/core/models/location_model.dart';
@@ -26,15 +25,20 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
+
+  final _rootRouter = AssistantRoutes();
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
+    return MaterialApp.router(
+      title: 'myAssistant',
       debugShowCheckedModeBanner: false,
-      builder: ExtendedNavigator.builder<AssistantRoutes>(
-        router: AssistantRoutes(),
-      ),
+      routerDelegate: _rootRouter.delegate(),
+      routeInformationParser: _rootRouter.defaultRouteParser(),
+      routeInformationProvider: _rootRouter.routeInfoProvider(),
+      // builder: ExtendedNavigator.builder<app_router.AssistantRoutes>(
+      //   router: AssistantRoutes(),
+      // ),
     );
   }
 }
