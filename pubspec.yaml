@@ -41,6 +41,8 @@ dependencies:
   font_awesome_flutter: ^8.11.0
   speech_to_text: ^5.1.1
   flutter_tts: ^2.1.0
+  contacts_service: ^0.6.3
+  url_launcher: ^6.0.12
 
 dev_dependencies:
   flutter_test:

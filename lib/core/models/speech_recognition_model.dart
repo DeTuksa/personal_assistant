@@ -1,5 +1,5 @@
-
 import 'package:flutter/material.dart';
+import 'package:personal_assistant/core/repository/repository.dart';
 import 'package:speech_to_text/speech_recognition_error.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 import 'package:personal_assistant/core/helper/string_extension.dart';
@@ -51,7 +51,15 @@ class SpeechRecModel extends ChangeNotifier {
       print(lastError);
   }
 
-   void listenToSpeech() async {
+  void customSpeechRec() async {
+    await listenToSpeech().then((value) {
+      isListening = false;
+      notifyListeners();
+    });
+    await performOperation();
+  }
+
+   Future<void> listenToSpeech() async {
     mainText = "";
     notifyListeners();
 
@@ -71,9 +79,6 @@ class SpeechRecModel extends ChangeNotifier {
         cancelOnError: true,
         localeId: currentLocaleId,
       );
-      print(speechToText.isListening);
-      print(speechToText.lastRecognizedWords);
-      isListening = false;
       notifyListeners();
     } else {
       isListening = false;
@@ -81,6 +86,13 @@ class SpeechRecModel extends ChangeNotifier {
       speechToText.stop();
       notifyListeners();
     }
+  }
+
+  void performOperation() async {
+    if (firstText.toLowerCase() == "call") {
+      await Repository().voiceCall('Babycakes');
+    }
+    notifyListeners();
   }
 
   String firstWord(String text) {

@@ -174,8 +174,8 @@ class _ListeningScreenState extends State<ListeningScreen> with SingleTickerProv
                   child: Padding(
                     padding: const EdgeInsets.all(18.0),
                     child: VoiceActivationWidget(
-                      onTapFunction: speechRecModel.speechToText.isListening ? null : () {
-                        speechRecModel.listenToSpeech();
+                      onTapFunction: speechRecModel.speechToText.isListening ? null : () async {
+                        await speechRecModel.customSpeechRec();
                       },
                     ),
                   ),
