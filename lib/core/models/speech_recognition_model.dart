@@ -6,6 +6,7 @@ import 'package:personal_assistant/core/helper/string_extension.dart';
 
 class SpeechRecModel extends ChangeNotifier {
 
+  String callersName = "";
   String mainText = "";
   String firstText = "";
   String lastStatus = "";
@@ -72,6 +73,7 @@ class SpeechRecModel extends ChangeNotifier {
         onResult: (value) {
           mainText = value.recognizedWords.capitalize();
           firstText = firstWord(value.recognizedWords);
+          callersName = getCalleeName(value.recognizedWords);
           notifyListeners();
           print(firstText);
           print(mainText);
@@ -90,9 +92,16 @@ class SpeechRecModel extends ChangeNotifier {
 
   void performOperation() async {
     if (firstText.toLowerCase() == "call") {
-      await Repository().voiceCall('Babycakes');
+      await Repository().voiceCall(callersName);
     }
     notifyListeners();
+  }
+
+  String getCalleeName(String val) {
+    List<String> mainTextSplit = val.split(' ');
+    print(val);
+    print(mainTextSplit[1]);
+    return mainTextSplit[1];
   }
 
   String firstWord(String text) {
